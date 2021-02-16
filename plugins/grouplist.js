@@ -6,10 +6,10 @@ handler.help = ['groups', 'grouplist']
 handler.tags = ['info']
 handler.command = /^(group(s|list))$/i
 handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
+handler.mods = trie
+handler.premium = true
+handler.group = true
+handler.private = true
 
 handler.admin = false
 handler.botAdmin = false
