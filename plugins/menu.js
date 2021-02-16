@@ -65,22 +65,22 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `
 ╭════•›「 ${conn.getName(conn.user.jid)} 」
+╿ I am BOT BY SHAMEEM MS
 ╿  Hai, %name !
 ╿ Total : *%exp XP*
 ╿ Tersisa : *%limit Limit*
 ╿
-╿ Hari : *%week*
-╿ Tanggal : *%date*
-╿ Waktu : *%time*
-╿ Lama Aktif : *%uptime*
+╿ Day : *%week*
+╿ Date : *%date*
+╿ Time : *%time*
+╿ Long Active : *%uptime*
 ╿ Database : %totalreg Nomor
 ╰═══════════════
 
-╭════•›「 Sosmed 」
-╿ Github :
-╿ https://github.com/Arya274/Arya-BOT3
-╿ Youtube : Drawl Nag
-╿ Instagram : @arpunchs
+╭════•›「 Social media 」
+╿ Owner : SHAMEEM.M.S
+╿ Whatsapp : wa.me//+19412543858
+╿ Instagram : @shameemms762
 ╰═══════════════
 
 ╭════•›「 Rules 」
