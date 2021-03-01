@@ -22,15 +22,6 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
       second: 'numeric'
     })
     let _uptime = process.uptime() * 1000
-    let _muptime
-    if (process.send) {
-      process.send('uptime')
-      _muptime = await new Promise(resolve => {
-        process.once('message', resolve)
-        setTimeout(resolve, 1000)
-      }) * 1000
-    }
-    let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
     let totalreg = Object.keys(global.DATABASE._data.users).length
     let tags = {
@@ -74,36 +65,31 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     conn.menu = conn.menu ? conn.menu : {}
     let before = conn.menu.before || `
 ╭════•›「 ${conn.getName(conn.user.jid)} 」
+╿ I am BOT BY SHAMEEM MS
 ╿  Hai, %name !
 ╿ Total : *%exp XP*
 ╿ Tersisa : *%limit Limit*
 ╿
-╿ Hari : *%week*
-╿ Tanggal : *%date*
-╿ Waktu : *%time*
-╿ Lama Aktif : *%uptime*
+╿ Day : *%week*
+╿ Date : *%date*
+╿ Time : *%time*
+╿ Long Active : *%uptime*
 ╿ Database : %totalreg Nomor
 ╰═══════════════
-
-╭════•›「 Sosmed 」
-╿ Github :
-╿ https://github.com/Arya274/Arya-BOT3
-╿ Youtube : Drawl Nag
-╿ Instagram : @arpunchs
+╭════•›「 Social media 」
+╿ Owner : SHAMEEM.M.S
+╿ Whatsapp : wa.me//+19412543858
+╿ Instagram : @shameemms762
 ╰═══════════════
-
 ╭════•›「 Rules 」
-╿• Telpon/VC = BAN/BLOKIR
-╿• Spam = BLOKIR
-╿• Ingin Donasi ?
-╿    => Hubungi #creator
+╿• Telpon/VC = BAN
+╿• Spam = BAN
 ╰═══════════════
-
 %readmore`
     let header = conn.menu.header || '╭════•›「 %category 」'
-    let body   = conn.menu.body   || ' ╿ %cmd%islimit'
-    let footer = conn.menu.footer || '╰══════════\n'
-    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `Powered bye\nBOT NFQ: ${global.conn.user.jid.split`@`[0]}`) + `\n*%npmname@^%version*\n\`\`\`\%npmdesc\`\`\``
+    let body   = conn.menu.body   || '╿ %cmd%islimit'
+    let footer = conn.menu.footer || '╰═══════════════\n'
+    let after  = conn.menu.after  || (conn.user.jid == global.conn.user.jid ? '' : `Powered by: ${global.conn.user.jid.split`@`[0]}`) + `\n*%npmname@^%version*\n\`\`\`\%npmdesc\`\`\``
     let _text  = before + '\n'
     for (let tag in groups) {
       _text += header.replace(/%category/g, tags[tag]) + '\n'
@@ -117,7 +103,7 @@ let handler  = async (m, { conn, usedPrefix: _p }) => {
     text =  typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
-      p: _p, uptime, muptime,
+      p: _p, uptime,
       npmname: package.name,
       npmdesc: package.description,
       version: package.version,
@@ -153,8 +139,10 @@ const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 
 function clockString(ms) {
-  let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
-  let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
-  let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+  let h = Math.floor(ms / 3600000)
+  let m = Math.floor(ms / 60000) % 60
+  let s = Math.floor(ms / 1000) % 60
+  console.log({ms,h,m,s})
   return [h, m, s].map(v => v.toString().padStart(2, 0) ).join(':')
 }
+© 2021 GitHub, Inc.
